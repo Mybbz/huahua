@@ -1,0 +1,17 @@
+<h1 class="text-center">Our Timeline</h1>
+
+<section id="cd-timeline" class="cd-container" ng-controller="TimelineCtrl">
+  <div class="cd-timeline-block" ng-repeat="event in timelineEvents">
+    <div class="cd-timeline-img cd-{{event.type}}">
+      <img ng-src="image/icon-{{event.type}}.svg">
+    </div> <!-- cd-timeline-img -->
+
+    <div class="cd-timeline-content">
+      <h2>{{event.title}}</h2>
+      <p>{{event.detail}}</p>
+      <a href="#0" class="cd-read-more">Read more</a>
+      <span class="cd-date">{{event.date}}</span>
+    </div> <!-- cd-timeline-content -->
+  </div> <!-- cd-timeline-block -->
+
+</section>

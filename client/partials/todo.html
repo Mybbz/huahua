@@ -1,0 +1,86 @@
+<div class="container" ng-controller="TodoCtrl">
+  <h1 class="text-center">Event List</h1>
+  <div class="alert alert-danger" ng-show="hasError">
+    <span class="glyphicon glyphicon-remove-circle"></span><strong> Error! {{errorMessage}}</strong>
+  </div>
+  <div class="row col-xs-12 todoInput">
+    <div class="col-xs-10">
+      <div class="row col-xs-12">
+        <input type="text" class="form-control input required" placeholder="--Enter an Event--" ng-model="todoTitle">
+      </div>
+      <div class="row col-xs-12">
+        <input type="text" class="form-control input" placeholder="--Event Detail--" ng-model="todoDetail">
+      </div>
+      <div class="row col-xs-12">
+        <div class="col-xs-6 form-group">
+          <label>Please select the event Type: </label>
+          <select name="todoType" ng-model="todoType" class="form-control required">
+            <option value="">--Please Select--</option>
+            <option value="picture">Picture</option>
+            <option value="location">Location</option>
+            <option value="video">Video</option>
+          </select>
+        </div>
+        <div class="col-xs-6">
+          <label>Please upload an image: </label>
+          <form action="/image/gallery/" enctype="multipart/form-data" method="post">
+            <input type="file" id="fileinput" accept="image/*" multiple>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="col-xs-2 todoButton">
+      <div class="col-xs-12">
+        <input type="button" class="btn btn-primary" ng-click="save()" value="Submit">
+      </div>
+      <div class="col-xs-12">
+        <input type="button" class="btn btn-primary" ng-click="clear()" value="Clear">
+      </div>
+    </div>
+  </div>
+  <div class="row col-xs-12 todos">
+    <div class="alert alert-info text-center" ng-hide="todos.length > 0">
+      <h3>No Todos yet!</h3>
+    </div>
+    <div ng-repeat="todo in todos" class="todo col-xs-12" ng-class="todo.isCompleted ? 'strike' : ''">
+      <div class="col-xs-1">
+        <input type="checkbox" ng-checked="todo.isCompleted" ng-click="updateStatus($event, todo._id, $index)">
+      </div>
+      <div class="col-xs-8">
+        <div class="col-xs-12">
+          <div class="row">
+            <span class="todoDate">{{todo.date}}</span>
+          </div>
+          <div class="todoEdit">
+            <span ng-show="!isEditable[$index]">{{todo.title}} (Type: {{todo.type}})</span>
+            <input ng-show="isEditable[$index]" class="form-control input todoUpdatedTitle" type="text" value="{{todo.title}}">            
+          </div>
+        </div>
+        <div class="col-xs-12">
+          <span ng-show="!isEditable[$index]">{{todo.detail}}</span>
+          <textarea ng-show="isEditable[$index]" class="form-control todoUpdatedDetail">{{todo.detail}}</textarea>
+        </div>
+        <div class="col-xs-12">
+          <div ng-show="isEditable[$index]" class="row col-xs-12 form-group">
+            <label>Please update the event Type if you need: </label>
+            <select name="todoType" class="form-control todoUpdatedType">
+              <option value="">--Please Select--</option>
+              <option value="picture">Picture</option>
+              <option value="location">Location</option>
+              <option value="video">Video</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-xs-12 editButtons text-center">
+          <input ng-show="isEditable[$index]" type="button" class="btn btn-warning" value="Update" ng-click="edit($index)" />
+          <input ng-show="isEditable[$index]" type="button" class="btn btn-warning" value="Cancel" ng-click="isEditable[$index] = false" />
+        </div>
+      </div>
+      <div class="col-xs-3">
+        <input type="button" class="btn btn-info" ng-disabled="todo.isCompleted" class="pull-right" value="Edit" ng-click="isEditable[$index] = true" />
+        <input type="button" class="btn btn-danger" class="pull-right" value="Delete" ng-click="delete($index)" />
+      </div>
+
+    </div>
+  </div>
+</div>

@@ -1,0 +1,71 @@
+.todoInput .input {
+    margin-bottom: 10px;
+}
+.todoButton .btn {
+    width: 100px;
+    margin-bottom: 10px;
+}
+.strike span {
+    text-decoration: line-through;
+    color: #ccc;
+}
+.todos {
+    padding: 20px;
+}
+.todo {
+    padding: 10px;
+    font-size: 21px;
+    border-bottom: 1px solid;
+}
+.todo .btn {
+    margin-left: 5px;
+    width: 72px;
+    border-radius: 8px;
+}
+.todo:hover {
+    background: #e7e7e7;
+}
+span.todoDate {
+    font-size: 10px;
+}
+.todoEdit span {
+    font-weight: bold;
+}
+.editButtons {
+    margin-top: 20px;
+}
+.business-image img {
+    max-height: 200px;
+}
+.form-control.required:after {
+  content: "*";
+  color: red;
+}
+@media (max-width: 991px) {
+    .todo .btn {
+        margin-bottom: 10px;
+    }
+    .todo input[type=checkbox] {
+        width: 25px;
+        height: 25px;
+    }
+}
+@media (max-width: 991px) {
+    .todo .btn-warning {
+        margin-top: 10px;
+        margin-left: 0px
+    }
+}
+ 
+@media (max-width: 480px) {
+    .todo .col-xs-8 {
+        width: 85%;
+    }
+    .todo .col-xs-3 {
+        width: 100%;
+        text-align: center;
+        border-top: 1px dashed #aaa;
+        padding-top: 10px;
+        margin-top: 10px;
+    }
+}
