@@ -16,6 +16,9 @@ todoApp.config(function($routeProvider, $httpProvider) {
   .when('/gallery', {
     templateUrl: '/partials/gallery.html'
   })
+  .when('/shop', {
+    templateUrl: '/partials/shop.html'
+  })
   .otherwise({
     redirectTo: '/home'
   });
